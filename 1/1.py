@@ -1,70 +1,36 @@
-from math import sqrt
-import numpy as np
+from math import gcd, isqrt
 
 def Divs(num: int) -> list[int]:
-    divs = []
-    for d in range(1, int(sqrt(num))): 
-        if num % d == 0:
-            divs.append(d)
-            divs.append(num // d)
-    if num == int(sqrt(num))**2:
-        divs.append(int(sqrt(num)))
-    return divs
+    num = abs(num)
+    if num == 0:
+        return []
+    return sorted({d for k in range(1, isqrt(num) + 1) if num % k == 0 for d in (k, num // k)})
 
 def isCoprime(n1: int, n2: int) -> bool:
-    mn = min(n1, n2)
-    for d in range(2, mn + 1):
-        if n1 % d == 0 and n2 % d == 0:
-            return False
-    return True
+    return gcd(n1, n2) == 1
 
 def countDivs(num: int) -> int:
-    count = 0
-    for k in range(2, int(sqrt(num))): 
-        if num % k == 0:
-            count += 2
-    if num == int(sqrt(num))**2:
-        count += 1
-    return count
+    return sum(1 for d in Divs(num) if d not in (1, abs(num)))
 
 def isPrime(num: int) -> bool:
     if num < 2:
         return False
-    for k in range(2, int(sqrt(num)+1)):  
-        if num % k == 0:
-            return False
-    return True
+    return all(num % k != 0 for k in range(2, isqrt(num) + 1))
 
 def func1(num: int) -> int:
-    acc = 1
-    non_prime_divs = [v for v in range(4, num // 2 + 1) if num % v == 0 and not isPrime(v)]
-    if not isPrime(num):
-        non_prime_divs.append(num)
-    acc += sum(non_prime_divs)
-    return acc
+    non_prime_divs = [d for d in Divs(num) if d != 1 and not isPrime(d)]
+    return 1 + sum(non_prime_divs)
 
 def func2(num: int) -> int:
-    acc = 0
-    for k in str(num):
-        if int(k) < 3:
-            acc += 1
-    return acc
+    return sum(1 for ch in str(abs(num)) if int(ch) < 3)
 
 def func3(num: int):
-    s = sum([int(v) for v in str(num) if v in "2357"])
+    s = sum(int(ch) for ch in str(abs(num)) if ch in "2357")
     if s == 0 or abs(num) <= 1:
         return 0
 
-
-    prime_divs = set(v for v in range(2, num // 2 + 1) if num % v == 0 and isPrime(v))
-    if isPrime(num):
-        prime_divs.add(num)
-
-    for p in prime_divs:
-        if s % p != 0:
-            return np.inf
-
-    return 0 
+    prime_divs = [d for d in Divs(num) if isPrime(d)]
+    return 0 if all(s % p == 0 for p in prime_divs) else float("inf")
 
 
 for n in [2516, 1514324218]:

@@ -15,4 +15,4 @@ def task2(text: str) -> str:
     return " ".join(map(shuffle_word, text.split()))
 
 
-print(task2("hello world python random"))
+print(task2("text txt abcdef bgdfkb 13451"))

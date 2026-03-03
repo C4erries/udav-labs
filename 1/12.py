@@ -14,4 +14,4 @@ def task12(lines: list[str]) -> list[str]:
     return sorted(lines, key=iterative_median_value)
 
 
-print(task12(["delta", "abc", "zoo", "abba"]))
+print(task12(["delta", "abc", "Zzz", "abba"]))

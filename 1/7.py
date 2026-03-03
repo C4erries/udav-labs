@@ -8,4 +8,4 @@ def task7(text: str) -> int | None:
     return min(numbers) if numbers else None
 
 
-print(task7("abc 42 qwe 7 0 13 2 zzz"))
+print(task7("abc 42 qwe 7 1 13 2 zzz"))

@@ -12,4 +12,4 @@ def task5(text: str) -> list[str]:
     return re.findall(pattern, text)
 
 
-print(task5("Встречи: 31 февраля 2007 и 1 марта 2020, а также 15 июля 1999."))
+print(task5("Встречи: 31 февраля 2007 и 1 марта 2020, а также 15 июля"))
