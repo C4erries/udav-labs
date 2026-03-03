@@ -1,9 +1,5 @@
-from collections import defaultdict
-
-#To do dfs Euler tour
-def solve(
-    parent: dict[str, str | None], queries: list[tuple[str, str]]
-) -> list[int]:
+﻿def solve(parent: dict[str, str | None], queries: list[tuple[str, str]]) -> list[int]:
+    """Bruteforce ancestor checks by climbing parent links."""
 
     def is_ancestor(ancestor: str, node: str) -> bool:
         while node is not None:
@@ -22,16 +18,18 @@ def solve(
             result.append(0)
     return result
 
+
 def task2() -> str:
-    """Даны два элемента в дереве. Для каждого запроса определить: 1/2/0 в зависимости от отношения предок-потомок."""
+    """For each query output 1 if first is ancestor, 2 if second is ancestor, else 0."""
 
     n = int(input())
     edges = [tuple(input().split()) for _ in range(n - 1)]
+    parent = {child: par for child, par in edges}
 
     k = int(input())
     queries = [tuple(input().split()) for _ in range(k)]
 
-    answers = solve(edges, queries)
+    answers = solve(parent, queries)
     return " ".join(map(str, answers))
 
 
