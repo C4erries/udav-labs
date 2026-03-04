@@ -1,11 +1,24 @@
-import re
-
-
-def task7(text: str) -> int | None:
+﻿def task7(text: str) -> int | None:
     """Дана строка. Найти минимальное из имеющихся в ней натуральных чисел."""
 
-    numbers = [int(n) for n in re.findall(r"\b\d+\b", text) if int(n) > 0]
+    numbers = []
+    current = ""
+
+    for ch in text:
+        if ch.isdigit():
+            current += ch
+        elif current:
+            value = int(current)
+            if value > 0:
+                numbers.append(value)
+            current = ""
+
+    if current:
+        value = int(current)
+        if value > 0:
+            numbers.append(value)
+
     return min(numbers) if numbers else None
 
 
-print(task7("abc 42 qwe 7 1 13 2 zzz"))
+print(task7("abc 42 qwe7 2 13 2 zz1z"))

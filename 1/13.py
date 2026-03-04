@@ -1,7 +1,7 @@
 def task13(lines: list[str]) -> list[str]:
     """Упорядочить строки по возрастанию квадратичного отклонения между максимальным ASCII-кодом и разностями ASCII-кодов зеркальных пар."""
 
-    def deviation(line: str) -> float:
+    def dev(line: str) -> float:
         if len(line) < 2:
             return 0.0
         max_code = max(map(ord, line))
@@ -13,7 +13,7 @@ def task13(lines: list[str]) -> list[str]:
             return 0.0
         return sum((max_code - diff) ** 2 for diff in diffs) / len(diffs)
 
-    return sorted(lines, key=deviation)
+    return sorted(lines, key=dev)
 
 
 print(task13(["abcd", "abba", "xyz", "aZ9"]))
