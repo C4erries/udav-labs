@@ -18,13 +18,20 @@ def isPrime(num: int) -> bool:
     return all(num % k != 0 for k in range(2, isqrt(num) + 1))
 
 def func1(num: int) -> int:
+    """Найти сумму непростых делителей числа"""
     non_prime_divs = [d for d in Divs(num) if d != 1 and not isPrime(d)]
     return 1 + sum(non_prime_divs)
 
 def func2(num: int) -> int:
+    """Найти количество цифр числа, меньших 3"""
     return sum(1 for ch in str(abs(num)) if int(ch) < 3)
 
 def func3(num: int):
+    """
+    Найти количество чисел, не являющихся делителями
+    исходного числа, не взамно простых с ним и взаимно простых с суммой
+    простых цифр этого числа
+    """
     s = sum(int(ch) for ch in str(abs(num)) if ch in "2357")
     if s == 0 or abs(num) <= 1:
         return 0

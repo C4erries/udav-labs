@@ -6,4 +6,9 @@ def task1() -> int:
     return len(set(first) & set(second))
 
 
-print(task1())
+print(task1()) # 2
+
+"""
+1 3 2
+4 3 2
+"""
