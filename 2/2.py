@@ -1,6 +1,6 @@
 ﻿def solve(parent: dict[str, str | None], queries: list[tuple[str, str]]) -> list[int]:
     def is_ancestor(ancestor: str, node: str) -> bool:
-        # ancestor - предок для node ?
+        # ancestor - предок для node
         while node is not None:
             if node == ancestor:
                 return True
