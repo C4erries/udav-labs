@@ -42,6 +42,11 @@ class Point:
     x: float
     y: float
 
+    def __init__(self, x : float, y : float):
+        self.x = x
+        self.y = y
+    
+
 
 def _is_number(value: object) -> bool:
     return isinstance(value, Real) and not isinstance(value, bool)
@@ -299,7 +304,7 @@ def main() -> None:
     except GeometryError as error:
         print(f"Ошибка при работе с корректными объектами: {error}")
 
-    print("\nДемонстрация обработки исключений:")
+    print("\nОбработка исключений:")
 
     try:
         Triangle("", [(0, 0), (1, 0), (0, 1)])
