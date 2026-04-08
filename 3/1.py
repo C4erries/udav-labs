@@ -283,10 +283,10 @@ def comparison_to_text(result: int) -> str:
 def main() -> None:
     try:
         pentagon = Pentagon(
-            "pent-01",
+            "pent-1",
             [(0, 0), (4, 0), (5, 2), (2.5, 5), (-1, 2)],
         )
-        triangle = Triangle("tri-01", [(1, 1), (3, 1), (2, 3.5)])
+        triangle = Triangle("tri-1", [(1, 1), (3, 1), (2, 3.5)])
 
         print("Созданы объекты:")
         print(pentagon)
