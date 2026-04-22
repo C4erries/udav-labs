@@ -1,0 +1,2 @@
+"""Insurance company lab application."""
+

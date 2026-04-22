@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Новый страховой случай{% endblock %}
+
+{% block content %}
+<section class="mx-auto max-w-3xl rounded-[1.5rem] border border-white/70 bg-white/85 p-6 shadow-xl shadow-stone-900/5">
+    <h2 class="text-4xl font-black tracking-tight">Добавить страховой случай</h2>
+
+    <form class="mt-6 grid gap-5" method="post" action="/claims/new">
+        <label class="grid gap-2 text-sm font-bold text-stone-600">
+            Полис
+            <select class="rounded-2xl border border-stone-200 bg-white px-4 py-3 text-brand-ink outline-none ring-brand-clay/20 transition focus:ring-4" name="policy_id" required>
+                {% for policy in policies %}
+                <option value="{{ policy.id }}">
+                    {{ policy.policy_number }} - {{ policy.client_name }}
+                </option>
+                {% endfor %}
+            </select>
+        </label>
+        <label class="grid gap-2 text-sm font-bold text-stone-600">
+            Дата случая
+            <input class="rounded-2xl border border-stone-200 bg-white px-4 py-3 text-brand-ink outline-none ring-brand-clay/20 transition focus:ring-4" name="claim_date" type="date" required>
+        </label>
+        <label class="grid gap-2 text-sm font-bold text-stone-600">
+            Описание
+            <textarea class="rounded-2xl border border-stone-200 bg-white px-4 py-3 text-brand-ink outline-none ring-brand-clay/20 transition focus:ring-4" name="description" rows="4" required></textarea>
+        </label>
+        <label class="grid gap-2 text-sm font-bold text-stone-600">
+            Сумма
+            <input class="rounded-2xl border border-stone-200 bg-white px-4 py-3 text-brand-ink outline-none ring-brand-clay/20 transition focus:ring-4" name="amount" type="number" min="0" step="0.01" required>
+        </label>
+        <label class="grid gap-2 text-sm font-bold text-stone-600">
+            Статус
+            <select class="rounded-2xl border border-stone-200 bg-white px-4 py-3 text-brand-ink outline-none ring-brand-clay/20 transition focus:ring-4" name="status" required>
+                <option value="new">new</option>
+                <option value="in_review">in_review</option>
+                <option value="approved">approved</option>
+                <option value="rejected">rejected</option>
+                <option value="paid">paid</option>
+            </select>
+        </label>
+        <button class="rounded-full bg-brand-clay px-5 py-3 text-sm font-bold text-white transition hover:bg-brand-ink" type="submit">Сохранить</button>
+    </form>
+</section>
+{% endblock %}

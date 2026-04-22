@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Новый полис{% endblock %}
+
+{% block content %}
+<section class="mx-auto max-w-3xl rounded-[1.5rem] border border-white/70 bg-white/85 p-6 shadow-xl shadow-stone-900/5">
+    <h2 class="text-4xl font-black tracking-tight">Добавить полис</h2>
+
+    <form class="mt-6 grid gap-5 md:grid-cols-2" method="post" action="/policies/new">
+        <label class="grid gap-2 text-sm font-bold text-stone-600 md:col-span-2">
+            Клиент
+            <select class="rounded-2xl border border-stone-200 bg-white px-4 py-3 text-brand-ink outline-none ring-brand-clay/20 transition focus:ring-4" name="client_id" required>
+                {% for client in clients %}
+                <option value="{{ client.id }}">{{ client.full_name }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label class="grid gap-2 text-sm font-bold text-stone-600">
+            Номер полиса
+            <input class="rounded-2xl border border-stone-200 bg-white px-4 py-3 text-brand-ink outline-none ring-brand-clay/20 transition focus:ring-4" name="policy_number" type="text" required>
+        </label>
+        <label class="grid gap-2 text-sm font-bold text-stone-600">
+            Вид страхования
+            <input class="rounded-2xl border border-stone-200 bg-white px-4 py-3 text-brand-ink outline-none ring-brand-clay/20 transition focus:ring-4" name="product_type" type="text" required>
+        </label>
+        <label class="grid gap-2 text-sm font-bold text-stone-600">
+            Дата начала
+            <input class="rounded-2xl border border-stone-200 bg-white px-4 py-3 text-brand-ink outline-none ring-brand-clay/20 transition focus:ring-4" name="start_date" type="date" required>
+        </label>
+        <label class="grid gap-2 text-sm font-bold text-stone-600">
+            Дата окончания
+            <input class="rounded-2xl border border-stone-200 bg-white px-4 py-3 text-brand-ink outline-none ring-brand-clay/20 transition focus:ring-4" name="end_date" type="date" required>
+        </label>
+        <label class="grid gap-2 text-sm font-bold text-stone-600">
+            Страховая премия
+            <input class="rounded-2xl border border-stone-200 bg-white px-4 py-3 text-brand-ink outline-none ring-brand-clay/20 transition focus:ring-4" name="premium" type="number" min="0" step="0.01" required>
+        </label>
+        <label class="grid gap-2 text-sm font-bold text-stone-600">
+            Страховая сумма
+            <input class="rounded-2xl border border-stone-200 bg-white px-4 py-3 text-brand-ink outline-none ring-brand-clay/20 transition focus:ring-4" name="insured_amount" type="number" min="0" step="0.01" required>
+        </label>
+        <button class="rounded-full bg-brand-clay px-5 py-3 text-sm font-bold text-white transition hover:bg-brand-ink md:col-span-2" type="submit">Сохранить</button>
+    </form>
+</section>
+{% endblock %}
