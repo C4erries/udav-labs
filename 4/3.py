@@ -33,12 +33,9 @@ def task3() -> str:
     в каждом посте была одинаковой.
     """
 
-    data = list(map(int, sys.stdin.buffer.read().split()))
-    if not data:
-        return ""
 
-    n, k = data[0], data[1]
-    durations = data[2 : 2 + n]
+    n, k = map(int, input().split())
+    durations = list(map(int, input().split()))
 
     answer = solve(durations, k)
     if answer is None:

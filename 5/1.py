@@ -36,8 +36,7 @@ def task1() -> bool:
 
     return is_ipv4(input())
 
-if __name__ == "__main__":
-    print(task1())  # True
+print(task1())
 
 
 """
