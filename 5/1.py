@@ -2,6 +2,12 @@ import re
 
 
 OCTET_PATTERN = r"(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)"
+"""
+250-255
+200-249
+100-199
+0-99
+"""
 IPV4_PATTERN = re.compile(rf"^(?:{OCTET_PATTERN}\.){{3}}{OCTET_PATTERN}$")
 
 
