@@ -1,7 +1,7 @@
 from pathlib import Path
 
 
-ALPHABET_LOWER = "абвгдежзийклмнопрстуфхцчшщъыьэюя"
+ALPHABET_LOWER = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
 ALPHABET_UPPER = ALPHABET_LOWER.upper()
 
 ENCRYPTED_LOWER = ALPHABET_LOWER[1:] + ALPHABET_LOWER[0]
@@ -35,7 +35,5 @@ def task2(source_path: str | Path, target_path: str | Path) -> str:
     target.write_text(decrypted_text, encoding="utf-8")
     return decrypted_text
 
-
-"""
 task2("encrypted.txt", "decrypted.txt")
-"""
+
