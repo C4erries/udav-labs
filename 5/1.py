@@ -39,8 +39,14 @@ def task1() -> bool:
     """
     Проверить, является ли введенная строка IP-адресом версии IPv4.
     """
+    data = input()
+    try: 
+        parse_ipv4(data)
+    except InvalidIPv4Error as err:
+        print(f"Error: {err}")
+        
 
-    return is_ipv4(input())
+    return is_ipv4(data)
 
 print(task1())
 

@@ -1,6 +1,3 @@
-import sys
-
-
 def solve(durations: list[int], post_count: int) -> list[int] | None:
     total_duration = sum(durations)
     if total_duration % post_count != 0:
