@@ -57,4 +57,3 @@ class ClaimAdmin(admin.ModelAdmin):
     @admin.display(description="Клиент")
     def client_name(self, obj: Claim) -> str:
         return obj.policy.client.full_name
-# Register your models here.

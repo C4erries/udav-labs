@@ -114,5 +114,3 @@ class Claim(models.Model):
 
     def get_absolute_url(self) -> str:
         return reverse("insurance:claims")
-
-# Create your models here.
