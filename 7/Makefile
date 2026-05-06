@@ -41,6 +41,12 @@ migrate: venv
 seed: venv
 	@source "$(ACTIVATE)" && python manage.py seed_demo
 
+admin: venv
+	export DJANGO_SUPERUSER_USERNAME=admin
+	export DJANGO_SUPERUSER_EMAIL=admin@example.ru
+	export DJANGO_SUPERUSER_PASSWORD=1234
+	@source "$(ACTIVATE)" && python manage.py createsuperuser --noinput
+
 run: venv
 	@source "$(ACTIVATE)" && python manage.py runserver "$(HOST):$(PORT)"
 
