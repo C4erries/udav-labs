@@ -126,5 +126,3 @@ class ClaimUpdateView(SuccessMessageMixin, UpdateView):
     success_url = reverse_lazy("insurance:claims")
     success_message = "Страховой случай обновлен."
     extra_context = {"title": "Редактировать страховой случай", "submit_label": "Сохранить"}
-
-# Create your views here.

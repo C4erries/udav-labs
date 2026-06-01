@@ -7,8 +7,6 @@ ALLOWED_TABLES = {"clients", "policies", "claims"}
 
 
 class InsuranceRepository:
-    """SQLite repository. SQL is kept here, away from FastAPI routes."""
-
     def list_clients(self) -> list[dict[str, Any]]:
         query = """
             SELECT id, full_name, phone, email, birth_date
